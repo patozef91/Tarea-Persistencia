@@ -26,7 +26,7 @@ public class BaseDatos extends SQLiteOpenHelper {
         String queryCrearTablaMascota = "CREATE TABLE " + ConstantesBaseDatos.TABLE_MASCOTAS + "(" +
                 ConstantesBaseDatos.TABLE_MASCOTAS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 ConstantesBaseDatos.TABLE_MASCOTAS_NOMBRE + " TEXT, " +
-                ConstantesBaseDatos.TABLE_MASCOTAS_FOTO + " INTEGER" +
+                ConstantesBaseDatos.TABLE_MASCOTAS_FOTO + " INTEGER, " +
                 ConstantesBaseDatos.TABLE_MASCOTAS_NUMERO_LIKES + " INTEGER" +
                 ")";
 
@@ -35,7 +35,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST " +ConstantesBaseDatos.TABLE_MASCOTAS);
+        db.execSQL("DROP TABLE IF EXISTS " +ConstantesBaseDatos.TABLE_MASCOTAS);
         onCreate(db);
     }
 
