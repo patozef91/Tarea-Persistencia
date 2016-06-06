@@ -40,15 +40,15 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         final Mascota masco=mascotas.get(position);
         mascotaViewHolder.mascotaName.setText(masco.getNombreMasco());
         mascotaViewHolder.mascotaPhoto.setImageResource(masco.getFotoMascota());
-        mascotaViewHolder.mascotaLike.setText(String.valueOf(masco.getLikeMasco()));
+        mascotaViewHolder.mascotaLike.setText(String.valueOf(masco.getLikeMasco())+" Likes");
         mascotaViewHolder.iconoHueso.setTag(mascotaViewHolder);
 
         mascotaViewHolder.iconoHueso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mascotaViewHolder.iconoHueso.setImageResource(R.drawable.huesodorado);
                 ConstructorMascotas constructorContactos = new ConstructorMascotas(activity);
-                mascotaViewHolder.mascotaLike.setText(constructorContactos.obtenerLikesContacto(masco) + " " + activity.getString(R.string.pLikes));
+                constructorContactos.insertarLikesMascota(masco);
+                mascotaViewHolder.mascotaLike.setText(constructorContactos.obtenerLikesMascota(masco) + " " + activity.getString(R.string.pLikes));
             }
         });
 

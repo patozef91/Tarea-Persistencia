@@ -73,8 +73,13 @@ public class ConstructorMascotas {
     }
 
 
-    public int obtenerLikesContacto(Mascota mascota){
+    public int obtenerLikesMascota(Mascota mascota){
         BaseDatos db = new BaseDatos(context);
         return db.obtenerLikesMascota(mascota);
+    }
+
+    public void insertarLikesMascota(Mascota mascota){
+        BaseDatos db = new BaseDatos(context);
+        db.insertarLikesMascota(mascota);
     }
 }

@@ -75,7 +75,7 @@ public class BaseDatos extends SQLiteOpenHelper {
         Cursor registros = db.rawQuery(query, null);
 
         if (registros.moveToNext()){
-            likes = registros.getInt(3);
+            likes = registros.getInt(0);
         }
 
         db.close();
@@ -83,4 +83,13 @@ public class BaseDatos extends SQLiteOpenHelper {
         return likes;
     }
 
+    public void insertarLikesMascota(Mascota mascota) {
+        String query = "UPDATE "+ConstantesBaseDatos.TABLE_MASCOTAS +
+                " SET " + ConstantesBaseDatos.TABLE_MASCOTAS_NUMERO_LIKES +"="+
+                ConstantesBaseDatos.TABLE_MASCOTAS_NUMERO_LIKES+"+1"+
+                " WHERE " + ConstantesBaseDatos.TABLE_MASCOTAS_ID + "="+mascota.getId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        db.close();
+    }
 }
